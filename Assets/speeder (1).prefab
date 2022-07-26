@@ -1783,6 +1783,7 @@ MonoBehaviour:
   explosionRadius: 10
   upwardForce: 1.5
   destroyDelay: 3
+  collision: 1
 --- !u!1 &2678373696796865279
 GameObject:
   m_ObjectHideFlags: 0
