@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
+    private void OnEnable()
+    {
+        Destroy(gameObject, 3f);
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
-        collision.transform.parent.GetComponent<LegoComponent>()?.Explode();
+        if (collision != null && collision.transform.parent != null)
+        {
+            if (collision.transform.parent.GetComponent<LegoComponent>() != null)
+                collision.transform.parent.GetComponent<LegoComponent>()?.Explode();
+            Destroy(gameObject);
+        }
+        
     }
 }

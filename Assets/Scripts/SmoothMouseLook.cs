@@ -4,8 +4,6 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class SmoothMouseLook : MonoBehaviour
 {
-    [SerializeField] Transform player;
-
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
@@ -73,7 +71,6 @@ public class SmoothMouseLook : MonoBehaviour
 
             //Rotate
             transform.localRotation = originalRotation * xQuaternion * yQuaternion;
-            player.Rotate(Vector3.up * rotationX);
         }
         else if (axes == RotationAxes.MouseX)
         {

@@ -13,33 +13,52 @@ public class LegoComponent : MonoBehaviour
 
     [Header("Collision")]
     public bool collision = false;
+    public bool rigidbody = false;
 
     private void Awake()
     {
-        if (collision)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            if (collision)
             {
                 MeshCollider collider = transform.GetChild(i).gameObject.AddComponent<MeshCollider>();
                 collider.convex = true;
             }
+            if (rigidbody)
+            {
+                Rigidbody rb = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+                rb.isKinematic = true;
+            }
+            transform.GetChild(i).gameObject.AddComponent<LegoBrick>();
+                
         }
+        
+
+        
     }
 
-    public void Explode() {
-        for (int i = 0; i < transform.childCount; i++) {
-            if (!collision)
-            {
-                MeshCollider collider = transform.GetChild(i).gameObject.AddComponent<MeshCollider>();
-                collider.convex = true;
-            }
-            
-            Rigidbody rb = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
-            rb.AddExplosionForce(Random.Range(explosionForceMin, explosionForceMax), transform.position, explosionRadius, upwardForce);
-            Destroy(transform.GetChild(i).gameObject, destroyDelay);
+    public void Explode()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject obj = transform.GetChild(i).gameObject;
+
+            LegoBrick lb = obj.gameObject.GetComponent<LegoBrick>();
+            if (lb.exploded)
+                return;
+            else
+                lb.exploded = true;
+
+            Rigidbody rb = obj.gameObject.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+
+            if (rb != null)
+                rb.AddExplosionForce(Random.Range(explosionForceMin, explosionForceMax), transform.position, explosionRadius, upwardForce);
+            Destroy(obj, destroyDelay);
         }
         Destroy(gameObject, destroyDelay + 1f);
-    } 
+
+    }
 
 
 

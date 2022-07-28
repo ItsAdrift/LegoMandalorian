@@ -198,9 +198,9 @@ public class MinifigController : MonoBehaviour
     protected static readonly int rotateSpeedHash = Animator.StringToHash("Rotate Speed");
     protected static readonly int groundedHash = Animator.StringToHash("Grounded");
     protected static readonly int jumpHash = Animator.StringToHash("Jump");
-    protected static readonly int playSpecialHash = Animator.StringToHash("Play Special");
+    public static readonly int playSpecialHash = Animator.StringToHash("Play Special");
     protected static readonly int cancelSpecialHash = Animator.StringToHash("Cancel Special");
-    protected static readonly int specialIdHash = Animator.StringToHash("Special Id");
+    public static readonly int specialIdHash = Animator.StringToHash("Special Id");
 
     protected Action<bool> onSpecialComplete;
 
@@ -672,8 +672,13 @@ public class MinifigController : MonoBehaviour
         airborne = airborneTime >= coyoteDelay;
 
         // Rotate minifig.
-        transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
-        transform.RotateAround(oldGroundedPosition, Vector3.up, externalRotation * Time.deltaTime);
+        if (!CameraManager.instance.isFirstPerson)
+        {
+            transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+            transform.RotateAround(oldGroundedPosition, Vector3.up, externalRotation * Time.deltaTime);
+            rotateSpeed = 0;
+        }
+        
 
         // Stop special if requested.
         cancelSpecial |= stopSpecial;

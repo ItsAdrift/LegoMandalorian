@@ -15,6 +15,11 @@ public class CameraManager : MonoBehaviour
             instance = this;
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void SetActiveCamera(Camera camera, bool fps)
     {
         activeCamera = camera;
