@@ -222,7 +222,7 @@ public class MinifigController : MonoBehaviour
         }
     }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -286,12 +286,12 @@ public class MinifigController : MonoBehaviour
                         // Calculate direct speed and speed.
                         var right = Vector3.right;
                         var forward = Vector3.forward;
-                        if (Camera.main)
+                        if (CameraManager.instance.activeCamera != null)
                         {
-                            right = Camera.main.transform.right;
+                            right = CameraManager.instance.activeCamera.transform.right;
                             right.y = 0.0f;
                             right.Normalize();
-                            forward = Camera.main.transform.forward;
+                            forward = CameraManager.instance.activeCamera.transform.forward;
                             forward.y = 0.0f;
                             forward.Normalize();
                         }
