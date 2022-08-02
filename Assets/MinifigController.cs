@@ -97,6 +97,8 @@ public class MinifigController : MonoBehaviour
     [SerializeField, Range(0, 10)]
     protected int maxJumpsInAir = 1;
 
+    private Vector3 teleportTo = Vector3.zero;
+
     public enum SpecialAnimation
     {
         AirGuitar = 0,
@@ -684,6 +686,12 @@ public class MinifigController : MonoBehaviour
         cancelSpecial |= stopSpecial;
         stopSpecial = false;
 
+        if (teleportTo != Vector3.zero)
+        {
+            transform.position = teleportTo;
+            teleportTo = Vector3.zero;
+        }
+
         UpdateMotionAnimations();
     }
 
@@ -1101,4 +1109,5 @@ public class MinifigController : MonoBehaviour
 
         UpdateState();
     }
+
 }

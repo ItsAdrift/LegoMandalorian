@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public Transform player;
+    public MinifigController player;
     public Transform exitPosition;
 
     public void Travel()
     {
         FindObjectOfType<Fade>().FadeInOut();
-        player. = exitPosition.position;
+
+        player.TeleportTo(exitPosition.position);
+        
 
     }
 }
