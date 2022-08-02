@@ -9,7 +9,7 @@ public class Fade : MonoBehaviour
     [SerializeField] public Image image;
 
     [Header("Fade In")]
-    [SerializeField] public float time;
+    [SerializeField] public float hold;
     [SerializeField] public float targetTime = 1;
     [SerializeField] float target;
 
@@ -77,7 +77,7 @@ public class Fade : MonoBehaviour
     IEnumerator _FadeInOut()
     {
         FadeIn();
-        yield return new WaitForSeconds(targetTime);
+        yield return new WaitForSeconds(hold);
 
         //fadeInOut = true;
         FadeOut();

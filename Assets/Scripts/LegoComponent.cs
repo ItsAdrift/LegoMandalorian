@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class LegoComponent : MonoBehaviour
 {
+    [Header("Collision")]
+    public bool collision = false;
+    public bool rigidbody = false;
+
+    [Header("Explosion")]
+    public bool explodable = true;
+    [Space]
     public float explosionForceMin = 100;
     public float explosionForceMax = 300;
     public float explosionRadius = 10;
     public float upwardForce = 1.5f;
 
     public float destroyDelay = 3f;
-
-    [Header("Collision")]
-    public bool collision = false;
-    public bool rigidbody = false;
 
     private void Awake()
     {
@@ -39,6 +42,8 @@ public class LegoComponent : MonoBehaviour
 
     public void Explode()
     {
+        if (!explodable)
+            return;
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject obj = transform.GetChild(i).gameObject;
