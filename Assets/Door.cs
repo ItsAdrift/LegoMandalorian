@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
         FindObjectOfType<Fade>().FadeInOut();
 
         player.TeleportTo(exitPosition.position);
+        player.transform.rotation = exitPosition.rotation;
         
 
     }

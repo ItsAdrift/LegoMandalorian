@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractHandler : MonoBehaviour
 {
-    private List<Interactable> highlighted = new List<Interactable>();
+    private Interactable highlighted;
 
     private void Start()
     {
@@ -18,19 +18,20 @@ public class InteractHandler : MonoBehaviour
 
     private void Highlight(Interactable interactable)
     {
-        highlighted.Add(interactable);
+        highlighted = interactable;
     }
 
     private void StopHighlight(Interactable interactable)
     {
-        highlighted.Remove(interactable);
+        highlighted = interactable;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && highlighted != null)
         {
-
+            highlighted.Interact();
+            highlighted.StopHighlight();
         }
     }
 }
