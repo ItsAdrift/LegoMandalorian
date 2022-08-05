@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Trigger : MonoBehaviour
 {
-    public string tag;
+    public string tag = "Player";
     public UnityEvent TriggerEnterEvent;
     
     public void Start()

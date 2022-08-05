@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] GameObject particleSystem;
 
     private void OnEnable()
     {
@@ -16,6 +17,15 @@ public class Projectile : MonoBehaviour
         {
             if (collision.transform.parent.GetComponent<LegoComponent>() != null)
                 collision.transform.parent.GetComponent<LegoComponent>()?.Explode();
+
+            if (particleSystem != null)
+            {
+                ContactPoint contact = collision.contacts[0];
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+                Vector3 pos = contact.point;
+                Destroy(Instantiate(particleSystem, pos, rot), 3f);
+            }
+            
             Destroy(gameObject);
         }
         
