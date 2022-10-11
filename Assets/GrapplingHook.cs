@@ -48,6 +48,8 @@ public class GrapplingHook : MonoBehaviour
     public LineRenderer lr;
     [SerializeField] Transform grapplingStart;
 
+    [SerializeField] LayerMask layerMask;
+
     public float time = 2;
 
     #endregion
@@ -65,14 +67,9 @@ public class GrapplingHook : MonoBehaviour
     void FixedUpdate()
     {
         Ray ray = new Ray(mainCamera.position, mainCamera.forward);
-        if (Physics.Raycast(ray, out hit, maxDistance))
+        if (Physics.Raycast(ray, out hit, maxDistance, layerMask))
         {
-            Debug.Log(hit.collider.tag);
-            if (hit.collider.tag.Equals("Hookable"))
-            {
-                isTargeting = true;
-            }
-            else isTargeting = false;
+            isTargeting = true;
         }
         else
         {
@@ -89,11 +86,13 @@ public class GrapplingHook : MonoBehaviour
             {
                 hooked = true;
                 hookedObj = hit.collider.gameObject;
+                lr.enabled = true;
             } else if (hooked)
             {
                 hooked = false;
                 hookedObj = null;
                 playerControl.gameObject.GetComponent<CharacterController>().enabled = true;
+                lr.enabled = false;
             }
         }
 
@@ -103,6 +102,7 @@ public class GrapplingHook : MonoBehaviour
             //playerControl.enabled = false;
             playerControl.gameObject.GetComponent<CharacterController>().enabled = false;
             playerControl.gameObject.transform.position = Vector3.Lerp(playerControl.gameObject.transform.position, hookedObj.transform.position, time * Time.deltaTime);
+            //playerControl.transform.position = (Vector3.MoveTowards(playerControl.gameObject.transform.position, hookedObj.transform.position, time * Time.deltaTime));
             lr.SetPositions(new Vector3[] { grapplingStart.position, hookedObj.transform.position});
         }
     }
@@ -209,7 +209,7 @@ public class GrapplingHook : MonoBehaviour
     {
         if (isTargeting)
         {
-            GUI.Box(new Rect(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(150, 20)), "Right Click To Grapple");
+            GUI.Box(new Rect(new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(150, 20)), "Press 'E' To Grapple");
         }
     }
 }
