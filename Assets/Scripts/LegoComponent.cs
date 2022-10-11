@@ -18,22 +18,27 @@ public class LegoComponent : MonoBehaviour
 
     public float destroyDelay = 3f;
 
-    private void Awake()
+    public void Start()
     {
+        Debug.Log("Check 1");
         for (int i = 0; i < transform.childCount; i++)
         {
+            Debug.Log("Check 2 - " + i);
             if (collision)
             {
+                Debug.Log("Check 3");
                 MeshCollider collider = transform.GetChild(i).gameObject.AddComponent<MeshCollider>();
                 collider.convex = true;
             }
             if (rigidbody)
             {
+                Debug.Log("Check 4");
                 Rigidbody rb = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
                 rb.isKinematic = true;
             }
             transform.GetChild(i).gameObject.AddComponent<LegoBrick>();
-                
+            Debug.Log("Check 5");
+
         }
         
 

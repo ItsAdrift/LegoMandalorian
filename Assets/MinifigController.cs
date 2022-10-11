@@ -242,6 +242,12 @@ public class MinifigController : MonoBehaviour
     private int lastSpecAnimation = 0;
     protected virtual void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         if (exploded)
         {
             return;

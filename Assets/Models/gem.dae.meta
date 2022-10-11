@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91d5ed7298e753642a61a458bd91886a
+guid: 11551185ea6ae7f47bab8c000b09a785
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,73 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material_0_c
-    second: {fileID: 2100000, guid: b4c78078a2ae37f41a1001903656b444, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_0_s
-    second: {fileID: 2100000, guid: b96b7eebfbf1e4e41b96359940d121bd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_14_c
-    second: {fileID: 2100000, guid: b33c6b37075f4bf4aafa6ca26e91f3c9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_15_c
-    second: {fileID: 2100000, guid: ffbc3677bbe53e74baf5702aa39789aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_19_c
-    second: {fileID: 2100000, guid: 3813d7580f0ee26429c3b83936de03ed, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_1_c
-    second: {fileID: 2100000, guid: 5d16a8a99cb316c488d2b70ae9c2d8ee, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_36_c
-    second: {fileID: 2100000, guid: 6fe34f907786b914d912cf4609176d78, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_40_c
-    second: {fileID: 2100000, guid: 5d84a52eab4d1d44cbaf46860abb86c6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_4_c
-    second: {fileID: 2100000, guid: 19546f89e191c1d49b06defcca8e3be4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_57_c
-    second: {fileID: 2100000, guid: 3f2b6dfef6727a04392e5c4a78dc52ec, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_71_c
-    second: {fileID: 2100000, guid: ec5838abe6b516f4e9c0f5654663f524, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_71_s
-    second: {fileID: 2100000, guid: 041a1120b791b0145bef2183dde3545a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_72_c
-    second: {fileID: 2100000, guid: 8a94801da60e4aa4e976c630ba213c67, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_80_c
-    second: {fileID: 2100000, guid: 9687037c26c0a0a46a9d57598d6fce0b, type: 2}
+      name: SOLID-WHITE
+    second: {fileID: 2100000, guid: 46a84545c45be15458c14c75a5f45bff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
